@@ -1,0 +1,32 @@
+# CMake build artifacts
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+
+# Conan generated files
+conan.lock
+conaninfo.txt
+conanbuildinfo.*
+CMakeUserPresets.json
+graph_info.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Compiled binaries and object files
+*.exe
+*.out
+*.app
+*.o
+*.a
+*.so
+*.dylib
+*.dll
