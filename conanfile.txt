@@ -1,5 +1,10 @@
 [requires]
+sdl/3.2.20
+glm/1.0.1
+spdlog/1.14.1
 
 [generators]
+CMakeDeps
+CMakeToolchain
 
 [options]

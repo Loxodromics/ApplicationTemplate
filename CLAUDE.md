@@ -37,8 +37,11 @@ Coding Style Guidelines
 ### Build Commands
 
 ```bash
+# Install dependencies
+conan install . --output-folder=build --build=missing
+
 # Configure project
-cmake -S . -B build -G Ninja
+cmake -S . -B build -G Ninja -DCMAKE_TOOLCHAIN_FILE=build/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug
 
 # Build project
 cmake --build build
@@ -54,6 +57,12 @@ rm -rf build
 - **Namespace naming**: Lowercase with underscores (e.g., `my_namespace`)
 - **Header/implementation**: Place `.h` and `.cpp` files side-by-side in `src/`
 - **CMake modules**: Place in `cmake/` directory
+
+## Dependencies
+
+- **SDL**: 3.2.20 (windowing, input, audio)
+- **glm**: 1.0.1 (OpenGL mathematics)
+- **spdlog**: 1.14.1 (logging)
 
 ## Requirements
 

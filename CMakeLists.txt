@@ -7,6 +7,18 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Conan integration will go here
+# Conan integration
+find_package(SDL3 REQUIRED CONFIG)
+find_package(glm REQUIRED CONFIG)
+find_package(spdlog REQUIRED CONFIG)
 
-# Source files will go here
+# Source files
+add_executable(${PROJECT_NAME}
+	src/main.cpp
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+	SDL3::SDL3
+	glm::glm
+	spdlog::spdlog
+)
