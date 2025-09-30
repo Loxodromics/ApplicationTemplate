@@ -30,3 +30,7 @@ graph_info.json
 *.so
 *.dylib
 *.dll
+
+# Claude
+.claude
+tasks
