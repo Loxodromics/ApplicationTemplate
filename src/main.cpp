@@ -1,55 +1,21 @@
-#include <SDL3/SDL.h>
+#include "application.h"
 #include <spdlog/spdlog.h>
+#include <exception>
 
-namespace lfd {
-
-constexpr int kWindowWidth = 800;
-constexpr int kWindowHeight = 600;
-
-int run()
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-	if (!SDL_Init(SDL_INIT_VIDEO)) {
-		spdlog::error("SDL initialization failed: {}", SDL_GetError());
+	try {
+		spdlog::set_level(spdlog::level::info);
+		spdlog::info("Starting application");
+
+		lfd::Application app;
+		return app.run();
+
+	} catch (const std::exception& e) {
+		spdlog::critical("Unhandled exception: {}", e.what());
+		return 1;
+	} catch (...) {
+		spdlog::critical("Unknown exception occurred");
 		return 1;
 	}
-
-	SDL_Window* window = SDL_CreateWindow(
-		"Application Template",
-		kWindowWidth,
-		kWindowHeight,
-		SDL_WINDOW_RESIZABLE
-	);
-
-	if (!window) {
-		spdlog::error("Window creation failed: {}", SDL_GetError());
-		SDL_Quit();
-		return 1;
-	}
-
-	spdlog::info("Window created successfully");
-
-	bool running = true;
-	SDL_Event event;
-
-	while (running) {
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_EVENT_QUIT) {
-				running = false;
-			}
-		}
-
-		SDL_Delay(16);
-	}
-
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-
-	return 0;
-}
-
-}
-
-int main(int argc, char* argv[])
-{
-	return lfd::run();
 }

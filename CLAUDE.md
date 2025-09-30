@@ -6,6 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 C++20 application template for graphical, interactive applications using SDL3, glm, and spdlog. Targets Linux (X11/Wayland) and macOS.
 
+The application follows a component-based architecture:
+- **Application**: Main orchestrator that owns and coordinates all subsystems
+- **Window**: SDL3 window management with RAII resource handling
+- **EventHandler**: SDL3 event processing and application state management
+- **GameLoop**: Frame timing, delta time calculation, and FPS tracking
+
 ## 
 Coding Style Guidelines
 * Use camelCase for methods and variables, PascalCase for classes and enums
